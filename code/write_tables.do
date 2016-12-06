@@ -20,7 +20,8 @@ do reg_labels
 /************************************************************************************/
 /* Section 2: Generate Summary Tables */
 /************************************************************************************/
-local filename = "mtax_1_SummaryTable.tex";
+capture mkdir ../results;
+local filename = "../results/mtax_1_SummaryTable.tex";
 
 /* SUMMARY OF REGRESSRION VARIABLES */
 eststo RegSum : qui estpost summarize delay marital_inc marital_inc_sq c_depx Pregnant NewBaby m_age f_age
@@ -83,7 +84,7 @@ esttab RegSum using `filename', replace
 /* Section 3: Generate Regression Tables */
 /************************************************************************************/
 /* MAIN REGRESSRION TABLE */
-local filename = "mtax_2_MainRegTable.tex";
+local filename = "../results/mtax_2_MainRegTable.tex";
 
 esttab HoH_lite HoH_full HoH_focus False_SpecQ3
 	using `filename', replace
@@ -99,7 +100,7 @@ esttab HoH_lite HoH_full HoH_focus False_SpecQ3
 	"omitted for brevity. All errors are clustered at the `cluster_var' level.");;
 
 /* MAIN REG UNDER DIFFERENT CHILDREN ALLOCATION ASSUMPTIONS TABLE (FOCUSED)*/
-local filename = "mtax_3a_ChildAllocation.tex";
+local filename = "../results/mtax_3a_ChildAllocation.tex";
 
 esttab HoH_focus Male_focus Female_focus Bio_focus HighE_focus Min_focus
 	using `filename', replace  
@@ -114,7 +115,7 @@ esttab HoH_focus Male_focus Female_focus Bio_focus HighE_focus Min_focus
 	"All errors are clustered at the `cluster_var' level.");
 
 /* MAIN REG UNDER DIFFERENT CHILDREN ALLOCATION ASSUMPTIONS TABLE (FULL)*/
-local filename = "mtax_3b_ChildAllocation.tex";
+local filename = "../results/mtax_3b_ChildAllocation.tex";
 
 esttab HoH_full Male_full Female_full Bio_full HighE_full Min_full
 	using `filename', replace  
@@ -129,7 +130,7 @@ esttab HoH_full Male_full Female_full Bio_full HighE_full Min_full
 	"All errors are clustered at the `cluster_var' level.");
 
 /* SENSITIVITY TESTS*/
-local filename = "mtax_4_Sensitivity.tex";
+local filename = "../results/mtax_4_Sensitivity.tex";
 
 esttab HoH_full_SF HoH_state HoH_wall HoH_ginc
 	using `filename', replace  
@@ -152,7 +153,7 @@ esttab HoH_full_SF HoH_state HoH_wall HoH_ginc
 
 #delimit ; 
 /* *************************************************** */
-file open myfile using "Tables.tex", write replace;
+file open myfile using "../results/Tables.tex", write replace;
 file write myfile "\documentclass{article} \usepackage{booktabs} \usepackage{pdflscape} \usepackage{geometry} \begin{document}" _newline(3);
 file write myfile "\newgeometry{margin=.5cm}  " _newline(1);
 file write myfile "\input{mtax_1_SummaryTable.tex}" _newline(3);
@@ -165,6 +166,8 @@ file write myfile "\end{document}";
 file close myfile;
 #delimit cr	
 
+cd ../results
 !pdflatex Tables.tex
 !START Tables.pdf
+cd $main_dir
 

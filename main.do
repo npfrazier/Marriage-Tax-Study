@@ -17,14 +17,14 @@ set more off
 
 **Specify Local File Locations
 * Path to current working directory and data
-global main_dir = "C:\code\Marriage_Tax_Study\"
+global main_dir = "C:/code/Marriage-Tax-Study/code"
 * Path to intermediate data files
-global data_dir = "C:\code\Marriage_Tax_Study\data\"
+global data_dir = "C:/code/Marriage-Tax-Study/data/"
 * Path to raw data, from PSID portal
-global RAW_data = "C:\Users\Nick\data\MarriageTax_Data.dta"
+global RAW_data = "C:/Users/Nick/data/MarriageTax_Data.dta"
 	* See description in included "DATA.txt"
 * Path to "Marriage History File"
-global MHF_data = "C:\Users\Nick\data\MH85_11.txt"
+global MHF_data = "C:/Users/Nick/data/MH85_11.txt"
 	* Used to clean data,see "http://psidonline.isr.umich.edu/Data/Documentation/cbks/supp/FamHist/mh85_07_intro.pdf"
 
 * Years included in our paper
@@ -38,7 +38,7 @@ global run_years "
 ** Set Run Parameters
 
 * Data Generation Parameters
-local refreshdata = 1				/* Refreshes Data (Pulls from Marriage File, Runs TAXSIM)*/
+local refreshdata = 0				/* Refreshes Data (Pulls from Marriage File, Runs TAXSIM)*/
 	local genmarriage = 1			/* 0 => Uses existing marriage data */
 	local step_vals = "0 1 3 4 5"   		/* Values to use in {RefreshData, ProcessData} loop */
 									/* 0 => All to HoH*/
@@ -85,7 +85,7 @@ local MoI = 1		/*marriage_of_interest.do*/
 		*	Else - Use all marriages
 
 cd "$main_dir"
-capture mkdir data /*make sure it exists*/
+capture mkdir ../data /*make sure it exists*/
 
 **********************************************************************************
 * Section 2: Refresh Data
