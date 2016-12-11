@@ -3,7 +3,7 @@
 **By:** Nick Frazier and Margaret McKeehan<br>
 **Last edited:** 12/2/2016
 
-This project details the empirical approach used in *Hesitating at the Altar: An Update on Taxes and the Timing of Marriage* by Nick Frazier and Margaret McKeehan.
+This project details the empirical approach used in *Hesitating at the Altar: An Update on Taxes and the Timing of Marriage* by Nick Frazier and Margaret McKeehan and found in the *Public Finance Review*.
 
 The project uses data on couples in the PSID who marry in the 1st or 4th quarters of 1986-2011. We process this data to form the inputs into NBER's *Taxsim* program which yields estimated federal and state income tax liabilities for couples when filing separately and married. From these estimates we can infer a marriage tax which is our primary instrument of interest in determining the decision to delay.
 

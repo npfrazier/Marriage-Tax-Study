@@ -3,6 +3,7 @@
 ** Nick Frazier and Margaret McKeehan
 ** Code used to generate results from
 **	 "Hesitating at the Altar: An Update on Taxes and the Timing of Marriage"
+** Found in the Public Finance Review
 **
 ** See readme.md for more information
 ** Last Edited: 12/2/2016
